@@ -1,0 +1,223 @@
+Windows PowerShell
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+Try the new cross-platform PowerShell https://aka.ms/pscore6
+
+PS C:\Users\User\Desktop\VSC U4> mongo
+MongoDB shell version v5.0.6
+connecting to: mongodb://127.0.0.1:27017/?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("75832ea3-1148-489f-9b8e-4d3cb4e47094") }
+MongoDB server version: 5.0.6
+================
+Warning: the "mongo" shell has been superseded by "mongosh",
+which delivers improved usability and compatibility.The "mongo" shell has been deprecated and will be removed in
+an upcoming release.
+For installation instructions, see
+https://docs.mongodb.com/mongodb-shell/install/
+================
+---
+The server generated these startup warnings when booting: 
+        2022-03-24T09:06:17.244+05:30: Access control is not enabled for the database. Read and write access to data and configuration is unrestricted
+---
+---
+        Enable MongoDB's free cloud-based monitoring service, which will then receive and display
+        metrics about your deployment (disk utilization, CPU, operation statistics, etc).
+
+        The monitoring data will be available on a MongoDB website with a unique URL accessible to you
+        and anyone you share the URL with. MongoDB may use this information to make product
+        improvements and to suggest MongoDB products and deployment options to you.
+
+        To enable free monitoring, run the following command: db.enableFreeMonitoring()
+        To permanently disable this reminder, run the following command: db.disableFreeMonitoring()
+---
+> show dbs
+admin   0.000GB
+config  0.000GB
+local   0.000GB
+> use assignment
+switched to db assignment
+> db.createCollection("user")
+{ "ok" : 1 }
+> show collections
+user
+> db.user.insert({"first_name":"Namjoon","last_name":"Kim","email":"namjooning@hybe.com","gender":"Male","ip_address":"121001","age":"27"})
+WriteResult({ "nInserted" : 1 })
+> db.user.find({}).pretty()
+{
+        "_id" : ObjectId("623e1986463dcb9deb0ccbbc"),
+        "first_name" : "Namjoon",
+        "last_name" : "Kim",
+  db.user.insertMany([{"first_name":"Seokjin","last_name":"Kim","email":"jin@hybe.com","gender":"Male","ip_address":"121002","age":"29"},{"first_name":"Yoongi","last_name":"Min","email":"yoongi@hybe.com","gender":"Male","ip_address":"121003","age":"29"},{"first_name":"Hoseok","last_name":"Jung","email":"jhope@hybe.com","gender":"Male","ip_address":"121004","age":"27"},{"first_name":"Jimin","last_name":"Park","email":"jiminshiiii@hybe.com","gender":"Male","ip_address":"121010","age":"26"},{"first_name":"Taehyung","last_name":"Kim","email":"taetae@hybe.com","gender":"Male","ip_address":"121011","age":"26"},{"first_name":"Jungkook","last_name":"Joen","email":"kookie@hybe.com","gender":"Male","ip_address":"121012","age":"24"}])"121011","age":"26"},{"first_name":"Jungkook","last_name":"Joen","email":"kookie@hybe.com","gender":"Male","ip_address"{
+        "acknowledged" : true,
+        "insertedIds" : [
+                ObjectId("623e19cf463dcb9deb0ccbbd"),
+                ObjectId("623e19cf463dcb9deb0ccbbe"),
+                ObjectId("623e19cf463dcb9deb0ccbbf"),
+                ObjectId("623e19cf463dcb9deb0ccbc0"),
+                ObjectId("623e19cf463dcb9deb0ccbc1"),
+                ObjectId("623e19cf463dcb9deb0ccbc2")
+        ]
+}
+> db.user.find({}).pretty()
+{
+        "_id" : ObjectId("623e1986463dcb9deb0ccbbc"),
+        "first_name" : "Namjoon",
+        "last_name" : "Kim",
+        "email" : "namjooning@hybe.com",
+        "gender" : "Male",
+        "ip_address" : "121001",
+        "age" : "27"
+}
+{
+        "_id" : ObjectId("623e19cf463dcb9deb0ccbbd"),
+        "first_name" : "Seokjin",
+        "last_name" : "Kim",
+        "email" : "jin@hybe.com",
+        "gender" : "Male",
+        "ip_address" : "121002",
+        "age" : "29"
+}
+{
+        "_id" : ObjectId("623e19cf463dcb9deb0ccbbe"),
+        "first_name" : "Yoongi",
+        "last_name" : "Min",
+        "email" : "yoongi@hybe.com",
+        "gender" : "Male",
+        "ip_address" : "121003",
+        "age" : "29"
+}
+{
+        "_id" : ObjectId("623e19cf463dcb9deb0ccbbf"),
+        "first_name" : "Hoseok",
+        "last_name" : "Jung",
+        "email" : "jhope@hybe.com",
+        "gender" : "Male",
+        "ip_address" : "121004",
+        "age" : "27"
+}
+{
+        "_id" : ObjectId("623e19cf463dcb9deb0ccbc0"),
+        "first_name" : "Jimin",
+        "last_name" : "Park",
+        "email" : "jiminshiiii@hybe.com",
+        "gender" : "Male",
+        "ip_address" : "121010",
+        "age" : "26"
+}
+{
+        "_id" : ObjectId("623e19cf463dcb9deb0ccbc1"),
+        "first_name" : "Taehyung",
+        "last_name" : "Kim",
+        "email" : "taetae@hybe.com",
+        "gender" : "Male",
+        "ip_address" : "121011",
+        "age" : "26"
+}
+{
+        "_id" : ObjectId("623e19cf463dcb9deb0ccbc2"),
+        "first_name" : "Jungkook",
+        "last_name" : "Joen",
+        "email" : "kookie@hybe.com",
+        "gender" : "Male",
+        "ip_address" : "121012",
+        "age" : "24"
+}
+> db.user.findOne({"first_name":"Taehyung"})   
+{
+        "_id" : ObjectId("623e19cf463dcb9deb0ccbc1"),
+        "first_name" : "Taehyung",
+        "last_name" : "Kim",
+        "email" : "taetae@hybe.com",
+        "gender" : "Male",
+        "ip_address" : "121011",
+        "age" : "26"
+}
+> db.user.update({"first_name":"Taehyung"},{$set:{"first_name":"Taetae"}})
+WriteResult({ "nMatched" : 1, "nUpserted" : 0, "nModified" : 1 })
+> db.user.updateMany({"gender":"Male"},{$set:{"location":"South_Korea"}})
+{ "acknowledged" : true, "matchedCount" : 7, "modifiedCount" : 7 }
+> db.user.find({}).pretty()
+{
+        "_id" : ObjectId("623e1986463dcb9deb0ccbbc"),
+        "first_name" : "Namjoon",
+        "last_name" : "Kim",
+        "email" : "namjooning@hybe.com",
+        "gender" : "Male",
+        "ip_address" : "121001",
+        "age" : "27",
+        "location" : "South_Korea"
+}
+{
+        "_id" : ObjectId("623e19cf463dcb9deb0ccbbd"),
+        "first_name" : "Seokjin",
+        "last_name" : "Kim",
+        "email" : "jin@hybe.com",
+        "gender" : "Male",
+        "ip_address" : "121002",
+        "age" : "29",
+        "location" : "South_Korea"
+}
+{
+        "_id" : ObjectId("623e19cf463dcb9deb0ccbbe"),
+        "first_name" : "Yoongi",
+        "last_name" : "Min",
+        "email" : "yoongi@hybe.com",
+        "gender" : "Male",
+        "ip_address" : "121003",
+        "age" : "29",
+        "location" : "South_Korea"
+}
+{
+        "_id" : ObjectId("623e19cf463dcb9deb0ccbbf"),
+        "first_name" : "Hoseok",
+        "last_name" : "Jung",
+        "email" : "jhope@hybe.com",
+        "gender" : "Male",
+        "ip_address" : "121004",
+        "age" : "27",
+        "location" : "South_Korea"
+}
+{
+        "_id" : ObjectId("623e19cf463dcb9deb0ccbc0"),
+        "first_name" : "Jimin",
+        "last_name" : "Park",
+        "email" : "jiminshiiii@hybe.com",
+        "gender" : "Male",
+        "ip_address" : "121010",
+        "age" : "26",
+        "location" : "South_Korea"
+}
+{
+        "_id" : ObjectId("623e19cf463dcb9deb0ccbc1"),
+        "first_name" : "Taetae",
+        "last_name" : "Kim",
+        "email" : "taetae@hybe.com",
+        "gender" : "Male",
+        "ip_address" : "121011",
+        "age" : "26",
+        "location" : "South_Korea"
+}
+{
+        "_id" : ObjectId("623e19cf463dcb9deb0ccbc2"),
+        "first_name" : "Jungkook",
+        "last_name" : "Joen",
+        "email" : "kookie@hybe.com",
+        "gender" : "Male",
+        "ip_address" : "121012",
+        "age" : "24",
+        "location" : "South_Korea"
+}
+> db.user.remove({"first_name":"Namjoon"})
+WriteResult({ "nRemoved" : 1 })
+> db.user.remove({})                      
+WriteResult({ "nRemoved" : 6 })
+> db
+assignment
+> db.dropDatabase()  
+{ "ok" : 1 }
+> db.dropDatabase()
+{ "ok" : 1 }
+> show dbs
+admin   0.000GB
+config  0.000GB
+local   0.000GB
